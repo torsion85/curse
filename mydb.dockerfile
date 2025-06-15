@@ -1,5 +1,9 @@
 FROM mariadb:lts
 
+RUN apt-get clean && apt-get update
+
 RUN apt-get update && \
-    apt-get install -y iputils-ping mariadb-client && \
-    apt-get clean
+    DEBIAN_FRONTEND=noninteractive apt-get install -y \
+    mariadb-client \
+    iputils-ping && \
+    rm -rf /var/lib/apt/lists/*
