@@ -13,10 +13,10 @@ services:
     networks:
       - dockercompose-frontend
     healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-p$${MYSQL_ROOT_PASSWORD}"]
-      interval: 10s
-      timeout: 15s
-      retries: 5
+  test: ["CMD-SHELL", "mariadb-admin ping -uroot -p$${MYSQL_ROOT_PASSWORD}"]
+  interval: 10s
+  timeout: 15s
+  retries: 5
 
   frontend:
     build:
