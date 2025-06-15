@@ -1,4 +1,4 @@
-version: '3.8'
+version: "3.3"
 
 services:
   mydb:
@@ -29,8 +29,7 @@ services:
       PMA_HOST: mydb
       PMA_PORT: 3306
     depends_on:
-      mydb:
-        condition: service_healthy
+      - mydb
     networks:
       - dockercompose-frontend
 
